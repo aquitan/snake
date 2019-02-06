@@ -23,3 +23,7 @@ for(let i = 0; i < excel.length; i++) {
         y--
     }
 }
+
+function generateSnake() {
+
+}

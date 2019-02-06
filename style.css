@@ -22,5 +22,13 @@ body {
 }
 
 .snake-body {
+    background: url(img/snake-body.jpg);
+    background-size: cover;
+    border-radius: 50%;
+}
 
+.snake-head {
+    background: url(img/snake-head.jpg);
+    background-size: cover;
+    border-radius: 10%;
 }
