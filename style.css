@@ -32,3 +32,8 @@ body {
     background-size: cover;
     border-radius: 10%;
 }
+
+.mouse {
+    background: url(img/mouse.png);
+    background-size: cover;
+}
