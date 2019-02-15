@@ -66,3 +66,71 @@ function createMouse() {
 }
 
 createMouse();
+
+let direction = 'right';
+
+function move() {
+    let snakeCoordinates = [snakeBody[0].getAttribute('posX'), snakeBody[0].getAttribute('posY')];
+    snakeBody[0].classList.remove('snake-head');
+    snakeBody[snakeBody.length-1].classList.remove('snake-body');
+    snakeBody.pop();
+
+
+    if (direction == 'right') {
+        if (snakeCoordinates[0] < 10) {
+            snakeBody.unshift(document.querySelector('[posX =  "' + (+ snakeCoordinates[0]+1) + '"][posY = "' + snakeCoordinates[1] + '"]'));
+        } else {
+            snakeBody.unshift(document.querySelector('[posX =  "1"][posY = "' + snakeCoordinates[1] + '"]'));
+        }
+    } else if (direction == 'left') {
+        if (snakeCoordinates[0] > 1) {
+            snakeBody.unshift(document.querySelector('[posX =  "' + (+ snakeCoordinates[0] - 1) + '"][posY = "' + snakeCoordinates[1] + '"]'));
+        } else {
+            snakeBody.unshift(document.querySelector('[posX =  "10"][posY = "' + snakeCoordinates[1] + '"]'));
+        }
+    } else if (direction == 'up') {
+        if (snakeCoordinates[1] < 10) {
+            snakeBody.unshift(document.querySelector('[posX =  "' + snakeCoordinates[0] + '"][posY = "' + (+ snakeCoordinates[1] + 1) + '"]'));
+        } else {
+            snakeBody.unshift(document.querySelector('[posX =  "' + snakeCoordinates[0] + '"][posY = "1"]'));
+        }
+    } else if (direction == 'down') {
+        if (snakeCoordinates[1] > 1) {
+            snakeBody.unshift(document.querySelector('[posX =  "' + snakeCoordinates[0] + '"][posY = "' + (+ snakeCoordinates[1] - 1) + '"]'));
+        } else {
+            snakeBody.unshift(document.querySelector('[posX =  "' + snakeCoordinates[0] + '"][posY = "10"]'));
+        }
+    }
+
+
+
+    if (snakeBody[0].getAttribute('posX'))
+
+
+    snakeBody[0].classList.add('snake-head');
+    for (var i = 0; i < snakeBody.length; i++) {
+        snakeBody[i].classList.add('snake-body');
+    }
+}
+
+
+let interval = setInterval(move, 200);
+
+window.addEventListener('keydown', function(e) {
+    if (e.keyCode == 37 && direction != 'right') {
+        direction = 'left';
+        console.log(true);
+    }
+    if (e.keyCode == 38 && direction != 'down') {
+        direction = 'up';
+        console.log(true);
+    }
+    if (e.keyCode == 39 && direction != 'left') {
+        direction = 'right';
+        console.log(true);
+    }
+    if (e.keyCode == 40 && direction != 'up') {
+        direction = 'down';
+        console.log(true);
+    }
+});
